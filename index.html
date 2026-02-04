@@ -23,7 +23,16 @@
         display: none;
         margin-top: 80px;
         color: white;
-        font-size: 28px;
+        font-size: 26px;
+    }
+
+    input {
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 20px;
+        border: none;
+        text-align: center;
+        width: 220px;
     }
 
     button {
@@ -45,6 +54,13 @@
     #yesBtn { left: 40%; }
     #noBtn { left: 55%; }
 
+    #message {
+        font-size: 28px;
+        margin-top: 40px;
+        color: white;
+        display: none;
+    }
+
     .hearts {
         position: fixed;
         bottom: -10px;
@@ -56,13 +72,6 @@
     @keyframes floatUp {
         0% { transform: translateY(0); opacity: 1; }
         100% { transform: translateY(-110vh); opacity: 0; }
-    }
-
-    #message {
-        font-size: 30px;
-        margin-top: 60px;
-        color: white;
-        display: none;
     }
 </style>
 </head>
@@ -76,9 +85,10 @@
 
 <!-- Question 1 -->
 <div id="q1" class="question">
-    <p>Q1. When did I propose you? 😏</p>
-    <button onclick="checkDate('18')">18th January</button>
-    <button onclick="checkDate('wrong')">I forgot 🙈</button>
+    <p>Q1. When did I propose you?<br>(Enter in format yyyy/mm/dd)</p>
+    <input type="text" id="dateInput" placeholder="2026/01/18">
+    <br>
+    <button onclick="checkDate()">Submit</button>
 </div>
 
 <!-- Question 2 -->
@@ -105,12 +115,14 @@ function startQuestions() {
     document.getElementById("q1").style.display = "block";
 }
 
-function checkDate(ans) {
+function checkDate() {
+    const input = document.getElementById("dateInput").value.trim();
+    const msg = document.getElementById("message");
+
     document.getElementById("q1").style.display = "none";
-    var msg = document.getElementById("message");
     msg.style.display = "block";
 
-    if(ans === '18') {
+    if(input === "2026/01/18") {
         msg.innerHTML = "Happy face 😍 Yesss Pugguuu you got it right!! 💖";
     } else {
         msg.innerHTML = "Gandeeeeee 😝 Bhul gaye naaaa!";
