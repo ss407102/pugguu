@@ -2,89 +2,56 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Important Question ❤️</title>
+<title>For Pugguuu ❤️</title>
 <style>
     body {
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        font-family: Arial, sans-serif;
-        text-align: center;
-        height: 100vh;
         margin: 0;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
         overflow: hidden;
+        text-align: center;
     }
 
     h1 {
         margin-top: 80px;
-        font-size: 40px;
+        font-size: 42px;
+        color: #fff;
+        text-shadow: 2px 2px 5px #ff69b4;
+    }
+
+    p {
+        font-size: 22px;
         color: white;
     }
 
-    .buttons {
-        margin-top: 80px;
-    }
-
     button {
-        padding: 15px 30px;
+        padding: 15px 35px;
         font-size: 20px;
-        border: none;
         border-radius: 30px;
+        border: none;
         cursor: pointer;
         position: absolute;
         transition: 0.3s;
     }
 
     #yesBtn {
-        background-color: #28a745;
+        background-color: #ff69b4;
         color: white;
         left: 40%;
         top: 60%;
     }
 
     #noBtn {
-        background-color: #dc3545;
+        background-color: #ff1493;
         color: white;
         left: 55%;
         top: 60%;
     }
 
-    .hidden {
+    #loveMessage {
         display: none;
-    }
-
-    #message {
         margin-top: 120px;
-        font-size: 30px;
+        font-size: 28px;
         color: white;
-        display: none;
+        animation: pop 1s ease forwards;
     }
-</style>
-</head>
-
-<body>
-
-<h1>Will you be my Valentine? ❤️</h1>
-
-<button id="yesBtn" onclick="showLove()">Yes 💖</button>
-<button id="noBtn" onmouseover="moveNo()">No 😏</button>
-
-<div id="message">
-    Yaaay!! I knew it 😍  
-    Get ready for the best Valentine ever 💕
-</div>
-
-<script>
-function moveNo() {
-    var btn = document.getElementById("noBtn");
-    var x = Math.random() * window.innerWidth * 0.8;
-    var y = Math.random() * window.innerHeight * 0.8;
-    btn.style.left = x + "px";
-    btn.style.top = y + "px";
-}
-
-function showLove() {
-    document.getElementById("message").style.display = "block";
-}
-</script>
-
-</body>
-</html>
