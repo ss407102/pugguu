@@ -3,76 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <title>For Pugguuu ❤️</title>
+
 <style>
-    body {
-        margin: 0;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-        background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
-        text-align: center;
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+    text-align: center;
+    overflow: hidden;
+}
 
-    h1 {
-        margin-top: 60px;
-        font-size: 42px;
-        color: white;
-        text-shadow: 2px 2px 5px #ff69b4;
-    }
+h1 {
+    margin-top: 60px;
+    font-size: 42px;
+    color: white;
+    text-shadow: 2px 2px 5px #ff69b4;
+}
 
-    .question {
-        display: none;
-        margin-top: 80px;
-        color: white;
-        font-size: 26px;
-    }
+.question {
+    display: none;
+    margin-top: 80px;
+    color: white;
+    font-size: 26px;
+}
 
-    input {
-        padding: 12px;
-        font-size: 18px;
-        border-radius: 20px;
-        border: none;
-        text-align: center;
-        width: 220px;
-    }
+input {
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    width: 220px;
+}
 
-    button {
-        padding: 12px 25px;
-        margin: 15px;
-        font-size: 18px;
-        border-radius: 25px;
-        border: none;
-        cursor: pointer;
-        background-color: #ff69b4;
-        color: white;
-    }
+button {
+    padding: 12px 25px;
+    margin: 15px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #ff69b4;
+    color: white;
+}
 
-    #yesBtn, #noBtn {
-        position: absolute;
-        top: 60%;
-    }
+#yesBtn, #noBtn {
+    position: absolute;
+    top: 60%;
+}
 
-    #yesBtn { left: 40%; }
-    #noBtn { left: 55%; }
+#yesBtn { left: 40%; }
+#noBtn { left: 55%; }
 
-    #message {
-        font-size: 28px;
-        margin-top: 40px;
-        color: white;
-        display: none;
-    }
+#message {
+    font-size: 28px;
+    margin-top: 40px;
+    color: white;
+    display: none;
+}
 
-    .hearts {
-        position: fixed;
-        bottom: -10px;
-        font-size: 24px;
-        animation: floatUp 6s linear infinite;
-        color: white;
-    }
+.hearts {
+    position: fixed;
+    bottom: -10px;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    color: white;
+}
 
-    @keyframes floatUp {
-        0% { transform: translateY(0); opacity: 1; }
-        100% { transform: translateY(-110vh); opacity: 0; }
-    }
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+}
 </style>
 </head>
 
@@ -86,7 +87,7 @@
 <!-- Question 1 -->
 <div id="q1" class="question">
     <p>Q1. When did I propose you?<br>(Enter in format yyyy/mm/dd)</p>
-    <input type="text" id="dateInput" placeholder="2026/01/18">
+    <input type="text" id="dateInput" placeholder="yyyy/mm/dd">
     <br>
     <button onclick="checkDate()">Submit</button>
 </div>
@@ -119,6 +120,13 @@ function checkDate() {
     const input = document.getElementById("dateInput").value.trim();
     const msg = document.getElementById("message");
 
+    const format = /^\d{4}\/\d{2}\/\d{2}$/;
+
+    if(!format.test(input)) {
+        alert("Enter date in correct format: yyyy/mm/dd 😝");
+        return;
+    }
+
     document.getElementById("q1").style.display = "none";
     msg.style.display = "block";
 
@@ -141,7 +149,6 @@ function finalMsg() {
     msg.innerHTML = "Best choice ever 😌💘<br><br>Get ready for the cutest Valentine date Pugguuu 🌹🥰";
 }
 
-// floating hearts
 setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "hearts";
