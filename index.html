@@ -8,58 +8,42 @@
         margin: 0;
         font-family: 'Comic Sans MS', cursive, sans-serif;
         background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
-        overflow: hidden;
         text-align: center;
+        overflow: hidden;
     }
 
     h1 {
-        margin-top: 80px;
+        margin-top: 60px;
         font-size: 42px;
-        color: #fff;
+        color: white;
         text-shadow: 2px 2px 5px #ff69b4;
     }
 
-    p {
-        font-size: 22px;
+    .question {
+        display: none;
+        margin-top: 80px;
         color: white;
+        font-size: 28px;
     }
 
     button {
-        padding: 15px 35px;
-        font-size: 20px;
-        border-radius: 30px;
+        padding: 12px 25px;
+        margin: 15px;
+        font-size: 18px;
+        border-radius: 25px;
         border: none;
         cursor: pointer;
-        position: absolute;
-        transition: 0.3s;
-    }
-
-    #yesBtn {
         background-color: #ff69b4;
         color: white;
-        left: 40%;
+    }
+
+    #yesBtn, #noBtn {
+        position: absolute;
         top: 60%;
     }
 
-    #noBtn {
-        background-color: #ff1493;
-        color: white;
-        left: 55%;
-        top: 60%;
-    }
-
-    #loveMessage {
-        display: none;
-        margin-top: 120px;
-        font-size: 28px;
-        color: white;
-        animation: pop 1s ease forwards;
-    }
-
-    @keyframes pop {
-        from { transform: scale(0); }
-        to { transform: scale(1); }
-    }
+    #yesBtn { left: 40%; }
+    #noBtn { left: 55%; }
 
     .hearts {
         position: fixed;
@@ -73,34 +57,76 @@
         0% { transform: translateY(0); opacity: 1; }
         100% { transform: translateY(-110vh); opacity: 0; }
     }
+
+    #message {
+        font-size: 30px;
+        margin-top: 60px;
+        color: white;
+        display: none;
+    }
 </style>
 </head>
 
 <body>
 
-<h1>Pugguuu 🥺💖</h1>
-<p>I have a very important question for you...</p>
+<h1>Pugguuu 🥺💖<br>Will you be my Valentine?</h1>
 
-<button id="yesBtn" onclick="showLove()">Yes 💗</button>
+<button id="yesBtn" onclick="startQuestions()">Yes 💗</button>
 <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
 
-<div id="loveMessage">
-    Yaaay Pugguuu!! 😍💞<br><br>
-    You just made me the happiest person alive!<br>
-    Get ready for the cutest Valentine ever 🥰🌹
+<!-- Question 1 -->
+<div id="q1" class="question">
+    <p>Q1. When did I propose you? 😏</p>
+    <button onclick="checkDate('18')">18th January</button>
+    <button onclick="checkDate('wrong')">I forgot 🙈</button>
 </div>
+
+<!-- Question 2 -->
+<div id="q2" class="question">
+    <p>Q2. With whom you want to go on a date? 😌</p>
+    <button onclick="finalMsg()">Sachin</button>
+    <button onclick="finalMsg()">Momo</button>
+    <button onclick="finalMsg()">Shukla Ji</button>
+    <button onclick="finalMsg()">All of the above 😍</button>
+</div>
+
+<div id="message"></div>
 
 <script>
 function moveNo() {
     var btn = document.getElementById("noBtn");
-    var x = Math.random() * window.innerWidth * 0.8;
-    var y = Math.random() * window.innerHeight * 0.8;
-    btn.style.left = x + "px";
-    btn.style.top = y + "px";
+    btn.style.left = Math.random() * 80 + "vw";
+    btn.style.top = Math.random() * 80 + "vh";
 }
 
-function showLove() {
-    document.getElementById("loveMessage").style.display = "block";
+function startQuestions() {
+    document.getElementById("yesBtn").style.display = "none";
+    document.getElementById("noBtn").style.display = "none";
+    document.getElementById("q1").style.display = "block";
+}
+
+function checkDate(ans) {
+    document.getElementById("q1").style.display = "none";
+    var msg = document.getElementById("message");
+    msg.style.display = "block";
+
+    if(ans === '18') {
+        msg.innerHTML = "Happy face 😍 Yesss Pugguuu you got it right!! 💖";
+    } else {
+        msg.innerHTML = "Gandeeeeee 😝 Bhul gaye naaaa!";
+    }
+
+    setTimeout(() => {
+        msg.style.display = "none";
+        document.getElementById("q2").style.display = "block";
+    }, 2500);
+}
+
+function finalMsg() {
+    document.getElementById("q2").style.display = "none";
+    var msg = document.getElementById("message");
+    msg.style.display = "block";
+    msg.innerHTML = "Best choice ever 😌💘<br><br>Get ready for the cutest Valentine date Pugguuu 🌹🥰";
 }
 
 // floating hearts
