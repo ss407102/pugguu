@@ -55,3 +55,64 @@
         color: white;
         animation: pop 1s ease forwards;
     }
+
+    @keyframes pop {
+        from { transform: scale(0); }
+        to { transform: scale(1); }
+    }
+
+    .hearts {
+        position: fixed;
+        bottom: -10px;
+        font-size: 24px;
+        animation: floatUp 6s linear infinite;
+        color: white;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-110vh); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Pugguuu 🥺💖</h1>
+<p>I have a very important question for you...</p>
+
+<button id="yesBtn" onclick="showLove()">Yes 💗</button>
+<button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+
+<div id="loveMessage">
+    Yaaay Pugguuu!! 😍💞<br><br>
+    You just made me the happiest person alive!<br>
+    Get ready for the cutest Valentine ever 🥰🌹
+</div>
+
+<script>
+function moveNo() {
+    var btn = document.getElementById("noBtn");
+    var x = Math.random() * window.innerWidth * 0.8;
+    var y = Math.random() * window.innerHeight * 0.8;
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+
+function showLove() {
+    document.getElementById("loveMessage").style.display = "block";
+}
+
+// floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "hearts";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.innerHTML = "💖";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+</body>
+</html>
